@@ -1,5 +1,9 @@
 package com.pi_proj.pi_proj.service;
+
+import com.pi_proj.pi_proj.model.Employee;
 import org.springframework.data.domain.Page;
+
+import java.util.List;
 
 public interface EmployeeService {
     List<Employee> getAllEmployees();
