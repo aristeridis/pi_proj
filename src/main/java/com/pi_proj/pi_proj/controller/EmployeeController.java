@@ -46,15 +46,15 @@ public class EmployeeController {
         return "redirect:/";
     }
 
-    @GetMapping("/page/{pageNo}")
-    public String findPaginated(@PathVariable(value = "pageNo") int pageNo,
+    @GetMapping("/page/{pageNum}")
+    public String findPaginated(@PathVariable(value = "pageNum") int pageNum,
                                 @RequestParam(value = "sortField") String sortField, @RequestParam(value = "sortDir") String sortDir,
                                 Model model) {
         int pageSize = 5;
-        Page<Employee> page = employeeService.findPaginated(pageNo, pageSize, sortField, sortDir);
+        Page<Employee> page = employeeService.findPaginated(pageNum, pageSize, sortField, sortDir);
         List<Employee> listEmployees = page.getContent();
 
-        model.addAttribute("currentPage", pageNo);
+        model.addAttribute("currentPage", pageNum);
         model.addAttribute("totalPages", page.getTotalPages());
         model.addAttribute("totalItems", page.getTotalElements());
         model.addAttribute("sortField", sortField);
